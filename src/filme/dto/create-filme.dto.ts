@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { IsNotEmpty, IsString, IsUrl } from 'class-validator';
-import { CreateGeneroDto } from 'src/genero/dto/create-genero.dto';
-import { CreateParticipanteDto } from 'src/participantes/dto/create-participante.dto';
+import { IsNotEmpty, IsString, IsUrl, IsInt } from 'class-validator';
+import { Prisma } from '@prisma/client';
 
 export class CreateFilmeDto {
 @IsNotEmpty()
@@ -20,10 +19,10 @@ data_lancamento: string;
 @IsString()
 tempo_duracao: string;
 
-@IsNotEmpty()
-genero: CreateGeneroDto[];
+@IsInt()
+genero_id?: number;
 
-@IsNotEmpty()
-participante: CreateParticipanteDto[];
+Participantes?: Prisma.ParticipantesUncheckedCreateNestedManyWithoutFilmeInput
+
 }
 

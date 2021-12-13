@@ -7,7 +7,12 @@ import { CreateFilmeDto } from './dto/create-filme.dto';
 import { UpdateFilmeDto } from './dto/update-filme.dto';
 
 @Injectable()
-export class FilmeService {
+export class FilmeService { 
+  create: any;
+  findAll: any;
+  findOne: any;
+  update: any;
+  remove: any;
   constructor(private prisma: PrismaService) {}
 
   async createPrisma(createFilmeDto: CreateFilmeDto): Promise<Filme> {
@@ -36,7 +41,7 @@ export class FilmeService {
       tempo_duracao: updateFilmeDto.tempo_duracao,
     };
     return await this.prisma.filme.update({
-      data: { ...film },
+      data: { ...updateFilmeDto },
       where: { id },
     });
   }

@@ -18,7 +18,7 @@ export class GeneroService {
     return await this.prisma.genero.create({
       data: { ...createGeneroDto },
     });
-  }
+  } 
 
   async findAllPrisma(): Promise<Genero[]> {
     return await this.prisma.genero.findMany();
